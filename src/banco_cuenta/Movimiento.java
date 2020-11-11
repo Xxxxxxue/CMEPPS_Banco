@@ -15,5 +15,28 @@ public class Movimiento {
     private int idMovimiento;
     private Date timeStamp;
     private String tipo;
-    private int importe;
+    private double importe;
+    
+    
+    public void setConcepto(String concepto) {
+        this.tipo = concepto;
+    }
+    
+    public String getConcepto() {
+        return this.tipo;
+    }
+    
+    public void setImporte(double x) {
+        this.importe = x;
+    }
+    
+    public double getImporte() {
+        return this.importe;
+    }
+    
+    
+    
 }
+
+
+
