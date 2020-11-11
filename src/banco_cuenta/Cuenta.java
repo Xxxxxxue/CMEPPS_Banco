@@ -26,16 +26,25 @@ public class Cuenta {
         movimientos=new ArrayList<Movimiento>();
     }
     
-    public void Ingresar(double s){
+    public void Ingresar(double s)throws Exception{
+        if (s<=0)
+            throw new Exception("No se puede ingresar una cantidad negativa");
         
-       Movimiento m = new Movimiento();
-       m.setImporte(s);
-       this.movimientos.add(m); 
+        Movimiento m=new Movimiento();
+        m.setConcepto("Ingreso en efectivo");
+        m.setImporte(s);
+        this.movimientos.add(m); 
     }
     
-    public void Retirar(double s) {
-        
-        Movimiento m = new Movimiento();
+    public void Retirar(double s) throws Exception{
+        if(s<=0){
+            throw new Exception("No se puede retirar una cantidad negativa");
+        }
+        if(getSaldo() < s) {
+            throw new Exception("Saldo insuficiente");
+        }
+        Movimiento m=new Movimiento();
+        m.setConcepto("Retirada de efectivo");
         m.setImporte(-s);
         this.movimientos.add(m);
     }

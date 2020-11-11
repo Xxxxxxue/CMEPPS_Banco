@@ -7,7 +7,6 @@ package banco_cuenta;
 
 import junit.framework.TestCase;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,13 +47,16 @@ public class CuentaTest extends TestCase {
     @Test
     public void testRetirar_double() throws Exception{
         System.out.println("Retirar test");
+        System.out.println(c.getSaldo());
+        assertEquals(c.getSaldo(), 0.0);
+        c.Ingresar(2000.0);
         try {
             c.Retirar(1000.0);
-            //assertTrue(c.getSaldo()==-1000.0);;
+            assertTrue(c.getSaldo()==1000.0);
         }
         catch (Exception e){
             fail("No deberia haber fallado.");
         }
-        assertEquals(c.getSaldo(), 0.0);
+        
     }
 }
